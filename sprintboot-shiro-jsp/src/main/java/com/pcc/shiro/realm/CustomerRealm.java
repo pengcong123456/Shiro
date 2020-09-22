@@ -3,6 +3,7 @@ package com.pcc.shiro.realm;
 import com.pcc.entity.Perms;
 import com.pcc.entity.User;
 import com.pcc.service.UserService;
+import com.pcc.shiro.salt.MyByteSource;
 import com.pcc.utils.ApplicationContextUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -14,6 +15,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.apache.shiro.util.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -29,6 +31,8 @@ public class CustomerRealm extends AuthorizingRealm {
         simpleAuthorizationInfo.addRole("user");
         //将数据库中查询权限信息赋值个权限对象
         simpleAuthorizationInfo.addStringPermission("user:update:01");*/
+    @Autowired
+    private UserService userService;
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         //获取到主身份信息
@@ -65,13 +69,13 @@ public class CustomerRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String principal = (String) token.getPrincipal();
         //在工厂中获取context对象
-        UserService userService = (UserService) ApplicationContextUtils.getBean("userService");
+        //UserService userService = (UserService) ApplicationContextUtils.getBean("userService");
 
         User user = userService.findByUserName(principal);
         if (null != user) {
             return new SimpleAuthenticationInfo(user.getUsername(),
                     user.getPassword(),
-                    ByteSource.Util.bytes(user.getSalt()),
+                    new MyByteSource(user.getSalt()),
                     this.getName());
         }
         return null;

@@ -65,6 +65,7 @@ public class RedisCache<k,v> implements Cache<k,v> {
 
     private RedisTemplate getRedisTemplate(){
         RedisTemplate redisTemplate = (RedisTemplate) ApplicationContextUtils.getBean("redisTemplate");
+
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
         return redisTemplate;

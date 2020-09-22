@@ -1,5 +1,6 @@
 package com.pcc.config;
 
+import com.pcc.shiro.cache.RedisCacheManager;
 import com.pcc.shiro.realm.CustomerRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
@@ -10,7 +11,6 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.cache.RedisCacheManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -68,7 +68,7 @@ public class ShiroConfig {
         customerRealm.setCredentialsMatcher(hashedCredentialsMatcher);
 
         //开启缓存管理
-        customerRealm.setCacheManager(new EhCacheManager());
+        customerRealm.setCacheManager(new RedisCacheManager());//ehCacheManager
         customerRealm.setCachingEnabled(true);//开启全局缓存
         customerRealm.setAuthenticationCachingEnabled(true);//认证认证缓存
         customerRealm.setAuthenticationCacheName("authenticationCache");//去别名

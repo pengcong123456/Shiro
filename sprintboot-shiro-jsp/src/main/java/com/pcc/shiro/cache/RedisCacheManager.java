@@ -10,7 +10,7 @@ import org.apache.shiro.cache.CacheManager;
  **/
 public class RedisCacheManager implements CacheManager {
     @Override
-    public <K, V> Cache<K, V> getCache(String s) throws CacheException {
-        return new RedisCache<>();
+    public <K, V> Cache<K, V> getCache(String cacheName) throws CacheException {
+        return new RedisCache<K,V>(cacheName);
     }
 }
