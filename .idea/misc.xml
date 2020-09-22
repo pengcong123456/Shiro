@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/Java_shiro/pom.xml" />
         <option value="$PROJECT_DIR$/sprintboot-shiro-jsp/pom.xml" />
+        <option value="$PROJECT_DIR$/../shiro实战教程资料/springboot_jsp_shiro/pom.xml" />
       </list>
     </option>
   </component>

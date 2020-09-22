@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Java_shiro/Java_shiro.iml" filepath="$PROJECT_DIR$/Java_shiro/Java_shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../shiro实战教程资料/springboot_jsp_shiro/springboot_jsp_shiro.iml" filepath="$PROJECT_DIR$/../shiro实战教程资料/springboot_jsp_shiro/springboot_jsp_shiro.iml" />
       <module fileurl="file://$PROJECT_DIR$/sprintboot-shiro-jsp/sprintboot-shiro-jsp.iml" filepath="$PROJECT_DIR$/sprintboot-shiro-jsp/sprintboot-shiro-jsp.iml" />
     </modules>
   </component>
