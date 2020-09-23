@@ -35,6 +35,11 @@ public class UserController {
         return "redirect:/index.jsp";
     }
 
+    @RequestMapping("getImage")
+    public void getImage(){
+
+    }
+
     @RequestMapping("register")
     public String register(User user) {
         try {
